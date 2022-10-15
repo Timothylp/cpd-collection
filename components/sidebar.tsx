@@ -1,3 +1,6 @@
+import Image from "next/image";
+import Link from "next/link";
+
 interface NavigationItem {
   title: string;
   href: string;
@@ -6,20 +9,35 @@ interface NavigationItem {
 function Sidebar({ navigation }: { navigation: NavigationItem[] }) {
   return (
     <aside className="hidden lg:block lg:flex-shrink-0">
-      <div className="h-full relative flex flex-col w-64 border-r border-gray-200 bg-white">
-        <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-          <nav className="mt-5 flex-1 px-2 bg-white space-y-1">
-            {navigation.map((item: NavigationItem) => (
-              <a
-                key={item.title}
-                href={item.href}
-                className="group flex items-center px-2 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-gray-50 hover:text-gray-900"
-              >
-                {item.title}
-              </a>
-            ))}
-          </nav>
+      <div className="relative flex h-full w-64 flex-col border-r border-gray-200 bg-white dark:border-black dark:bg-stone-900">
+        <div className="mx-auto">
+          <Link href="/settings">
+            <a>
+              <div className="relative my-3 h-32 w-32 flex-1">
+                <Image
+                  src="/minougris.jpg"
+                  alt="Profil image"
+                  layout="fill"
+                  objectFit="contain"
+                  className="rounded-full"
+                />
+              </div>
+              <p className="text-center text-lg font-bold text-uber">Timothy</p>
+            </a>
+          </Link>
         </div>
+
+        <nav className="mt-5 flex-1 space-y-1 px-2">
+          {navigation.map((item: NavigationItem) => (
+            <a
+              key={item.title}
+              href={item.href}
+              className="group flex items-center rounded-md px-2 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-200 dark:hover:bg-stone-700 dark:hover:text-gray-200"
+            >
+              {item.title}
+            </a>
+          ))}
+        </nav>
       </div>
     </aside>
   );
