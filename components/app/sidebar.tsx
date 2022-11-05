@@ -12,7 +12,7 @@ function Sidebar({ navigation }: { navigation: NavigationItem[] }) {
     <aside className="fixed bottom-0 z-10 w-full md:relative md:block md:w-auto md:flex-shrink-0">
       <div className="relative flex h-full w-full flex-row-reverse items-center border-r border-gray-200 bg-white dark:border-black dark:bg-stone-900 md:w-24 md:flex-col lg:w-64">
         <div className="mx-auto border-l border-gray-200 px-4 dark:border-black md:border-l-0 md:px-0">
-          <Link href="/settings">
+          <Link href="/app/settings">
             <div className="relative my-3  h-10 w-10 flex-1 md:h-16 md:w-16 lg:h-32 lg:w-32">
               <Image src="/minougris.jpg" alt="Profil image" fill className="rounded-full" />
             </div>

@@ -13,18 +13,18 @@ function Layout({ children }: { children: React.ReactNode }) {
         />
       ),
       title: "Inventaire",
-      href: "/",
+      href: "/app/",
     },
     {
       icon: (
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
-          d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
+          d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
         />
       ),
-      title: "Pokédex",
-      href: "/pokedex",
+      title: "Encyclopédie",
+      href: "/app/encyclopedia",
     },
     {
       icon: (
@@ -35,7 +35,7 @@ function Layout({ children }: { children: React.ReactNode }) {
         />
       ),
       title: "Combat",
-      href: "/combat",
+      href: "/app/combat",
     },
   ];
 
