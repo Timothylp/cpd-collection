@@ -10,13 +10,7 @@ interface DeliveryBoy {
 }
 
 function DeliveryCard({ deliveryBoy }: { deliveryBoy: DeliveryBoy }) {
-  const rarityColors = [
-    "outline-stone-300",
-    "outline-blue-400",
-    "outline-purple-500",
-    "outline-orange-500",
-    "outline-red-500",
-  ];
+  const rarityColors = ["outline-stone-300", "outline-blue-400", "outline-purple-500", "outline-orange-500", "outline-red-500"];
 
   return (
     <div
@@ -25,14 +19,7 @@ function DeliveryCard({ deliveryBoy }: { deliveryBoy: DeliveryBoy }) {
       } delivery-boy-card dark:border-gray-700 dark:bg-gray-800`}
     >
       <div className="relative px-4 pt-4">
-        <Image
-          className="rounded-lg"
-          src={deliveryBoy.image}
-          alt=""
-          width="100%"
-          height="100%"
-          layout="responsive"
-        />
+        <Image className="rounded-lg" src={deliveryBoy.image} alt={deliveryBoy.title} width={500} height={500} />
       </div>
 
       <div className="p-5 text-center text-lg font-bold tracking-tight text-gray-900 dark:text-white">
