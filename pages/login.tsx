@@ -1,11 +1,11 @@
 import type { NextPage } from "next";
 import { useState } from "react";
-import userAuthentification from "../utils/pocketbase";
-import { useRouter } from 'next/router'
+import { userAuthentification } from "../utils/pocketbase";
+import { useRouter } from "next/router";
 
 const LoginPage: NextPage = () => {
-  const router = useRouter()
-  const [mode, setMode] = useState('login');
+  const router = useRouter();
+  const [mode, setMode] = useState("login");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [passwordFocus, setPasswordFocus] = useState(false);
@@ -19,18 +19,18 @@ const LoginPage: NextPage = () => {
   };
 
   const handleSubmit = () => {
-    if(!(password.length < 6)){
+    if (!(password.length < 6)) {
       userAuthentification(email, password).then((response) => {
-        if(response.user !== undefined){
-          router.push('/app')
+        if (response.user !== undefined) {
+          router.push("/app");
         }
-      })
+      });
     }
   };
 
   return (
     <div>
-      <div className="w-full max-w-sm m-auto">
+      <div className="m-auto w-full max-w-sm">
         <form className="mb-4 rounded bg-white px-8 pt-6 pb-8 shadow-md">
           <div className="mb-4">
             <label className="mb-2 block text-sm font-bold text-gray-700" htmlFor="email">
@@ -65,12 +65,17 @@ const LoginPage: NextPage = () => {
                 Confirmez le mot de passe
               </label>
               <input
-                className={"focus:shadow-outline mb-3 w-full appearance-none rounded border border-red-500 py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none" + ((password.length < 6 && passwordFocus) ? " border-red-500" : "")}
+                className={
+                  "focus:shadow-outline mb-3 w-full appearance-none rounded border border-red-500 py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none" +
+                  (password.length < 6 && passwordFocus ? " border-red-500" : "")
+                }
                 id="confirm_password"
                 type="password"
                 placeholder="Mot de passe"
               />
-              {(password.length < 6 && passwordFocus) && <p className="text-xs italic text-red-500">Utilisez 6 caractères ou plus pour votre mot de passe.</p>}
+              {password.length < 6 && passwordFocus && (
+                <p className="text-xs italic text-red-500">Utilisez 6 caractères ou plus pour votre mot de passe.</p>
+              )}
             </div>
           )}
           <div className="flex items-center justify-between">

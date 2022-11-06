@@ -1,8 +1,13 @@
 import Head from "next/head";
 import Header from "./header";
 import Sidebar from "./sidebar";
+import { useEffect } from "react";
+import { isLogged } from "../../utils/pocketbase";
+import { useRouter } from "next/router";
 
 function Layout({ children }: { children: React.ReactNode }) {
+  const router = useRouter();
+
   const navigation = [
     {
       icon: (
@@ -38,6 +43,12 @@ function Layout({ children }: { children: React.ReactNode }) {
       href: "/app/combat",
     },
   ];
+
+  useEffect(() => {
+    if (!isLogged()) {
+      router.push("/login");
+    }
+  }, []);
 
   return (
     <>
