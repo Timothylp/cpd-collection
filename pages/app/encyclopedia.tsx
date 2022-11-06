@@ -1,30 +1,23 @@
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
-import Inventory from "../../components/app/inventory";
 import Layout from "../../components/app/layout";
-import { client } from "../../utils/pocketbase";
+import { getDeliveryCards } from "../../utils/pocketbase";
+import { Record } from "pocketbase";
 
-export async function getServerSideProps() {
-  const res = await client.records.getList("deliveryCard", 1, 50);
-  const data = JSON.stringify(res);
-
-  return {
-    props: {
-      data,
-    },
-  };
-}
-
-const EncyclopediaPage: NextPage = ({ data }) => {
-  const [deliveryBoys, setDeliveryBoys] = useState(JSON.parse(data).items);
+const EncyclopediaPage: NextPage = () => {
+  const [deliveryBoys, setDeliveryBoys] = useState<Record[]>([]);
 
   useEffect(() => {
-    console.log(deliveryBoys);
-  }, [deliveryBoys]);
+    getDeliveryCards().then((data: Record[]) => {
+      if (data) {
+        setDeliveryBoys(data);
+      }
+    });
+  }, []);
 
   return deliveryBoys && deliveryBoys.length > 0 ? (
     <Layout>
-      <Inventory deliveryBoys={deliveryBoys} />
+      <div>ça marche</div>
     </Layout>
   ) : (
     <Layout>

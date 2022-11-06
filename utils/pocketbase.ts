@@ -1,4 +1,5 @@
 import PocketBase from "pocketbase";
+import { Record } from "pocketbase";
 
 export const client = new PocketBase("https://8090-timothylp-cpdcollection-76lm2ia6dze.ws-eu74.gitpod.io");
 
@@ -34,4 +35,14 @@ export async function userAuthentification(email: string, password: string) {
 
 export function userAuthClear() {
   client.authStore.clear();
+}
+
+export async function getDeliveryCards() {
+  let items: Record[] = [];
+  const result = await client.records.getList("deliveryCard", 1, 50);
+  if (result) {
+    items = result.items;
+  }
+
+  return items;
 }
