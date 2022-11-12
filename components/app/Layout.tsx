@@ -1,11 +1,12 @@
 import Head from "next/head";
-import Header from "./header";
-import Sidebar from "./sidebar";
-import { useEffect } from "react";
+import Header from "./Header";
+import Sidebar from "./Sidebar";
+import { useEffect, useState } from "react";
 import { isLogged } from "../../utils/pocketbase";
 import { useRouter } from "next/router";
 
 function Layout({ children }: { children: React.ReactNode }) {
+  const [isLoggedin, setIsLoggedin] = useState(false);
   const router = useRouter();
 
   const navigation = [
@@ -46,11 +47,13 @@ function Layout({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (!isLogged()) {
-      router.push("/login");
+      router.push("/");
+    } else {
+      setIsLoggedin(true);
     }
   }, []);
 
-  return (
+  return isLoggedin ? (
     <>
       <Head>
         <title>Cent Percent Delivery</title>
@@ -68,6 +71,8 @@ function Layout({ children }: { children: React.ReactNode }) {
         </div>
       </main>
     </>
+  ) : (
+    <div></div>
   );
 }
 

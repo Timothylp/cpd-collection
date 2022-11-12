@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import Layout from "../../components/app/layout";
+import Layout from "../../components/app/Layout";
 
 const CombatPage: NextPage = () => {
   return (

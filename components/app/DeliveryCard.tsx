@@ -1,13 +1,7 @@
-import Image from "next/image";
+import { Record } from "pocketbase";
+import DeliveryBoy from "../../types/DeliveryBoy";
 
-interface DeliveryBoy {
-  id: number;
-  title: string;
-  image: string;
-  family: string;
-  rarity: number;
-  deliveryPower: number;
-}
+import Image from "next/image";
 
 function DeliveryCard({ deliveryBoy }: { deliveryBoy: DeliveryBoy }) {
   const rarityColors = ["outline-stone-300", "outline-blue-400", "outline-purple-500", "outline-orange-500", "outline-red-500"];
@@ -24,7 +18,7 @@ function DeliveryCard({ deliveryBoy }: { deliveryBoy: DeliveryBoy }) {
 
       <div className="p-5 text-center text-lg font-bold tracking-tight text-gray-900 dark:text-white">
         <h5>{deliveryBoy.title}</h5>
-        <p>{deliveryBoy.deliveryPower} DP</p>
+        {deliveryBoy.power ? <p>{deliveryBoy.power} DP</p> : null}
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import { useTheme } from "next-themes";
-import { userAuthClear } from "../../utils/pocketbase";
+import { userAuthClear, setCookie } from "../../utils/pocketbase";
 import { useRouter } from "next/router";
 
 function Header() {
@@ -7,8 +7,18 @@ function Header() {
   const router = useRouter();
 
   const handleLogout = () => {
-    userAuthClear()
-    router.push('/login')
+    userAuthClear();
+    router.push("/");
+  };
+
+  const handleTheme = () => {
+    if(theme === "dark"){
+      setTheme("light");
+      setCookie("dark_mode", "0")
+    } else {
+      setTheme("dark");
+      setCookie("dark_mode", "1")
+    }
   }
 
   return (
@@ -18,7 +28,7 @@ function Header() {
         <div className="flex gap-3">
           <button
             className="rounded-full text-2xl hover:bg-gray-200 dark:hover:bg-stone-700"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            onClick={handleTheme}
           >
             {theme === "dark" ? "🌙" : "🌞"}
           </button>
