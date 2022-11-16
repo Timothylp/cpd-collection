@@ -24,7 +24,7 @@ const HomePage: NextPage = () => {
     <div className="bg-white" style={{ height: "100vh" }}></div>
   ) : (
     <div className="flex min-h-screen bg-black">
-      <div className="relative w-1/2 p-4 text-center">
+      <div className="absolute top-1/2 md:relative w-full md:w-1/2 p-4 text-center">
         <div className="absolute top-1/2 left-1/2 w-full -translate-y-1/2 -translate-x-1/2  ">
           <h1 className="mb-20 font-mono text-6xl text-gray-200 antialiased">Cent Percent Delivery</h1>
 
@@ -43,7 +43,7 @@ const HomePage: NextPage = () => {
         </div>
       </div>
 
-      <div className="w-1/2">
+      <div className="w-full md:w-1/2">
         <Image src={bg} alt="Astronaute avec un tacos" className="h-screen rounded-bl-full" />
       </div>
     </div>

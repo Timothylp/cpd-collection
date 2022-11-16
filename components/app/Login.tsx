@@ -29,8 +29,8 @@ function LoginPage() {
   };
 
   return (
-    <div className="m-auto w-full max-w-sm rounded border-2 border-solid border-white bg-black font-mono">
-      <form className="mb-4 px-8 pt-6 pb-8 shadow-md" onSubmit={handleSubmit}>
+    <div className="m-auto w-full max-w-xs sm:max-w-sm lg:max-w-md rounded border-2 border-solid border-white bg-black font-mono">
+      <form className="px-8 pt-6 pb-6 md:pb-8 shadow-md" onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="mb-2 block text-sm font-bold text-gray-200" htmlFor="email">
             Email
@@ -77,9 +77,9 @@ function LoginPage() {
             )}
           </div>
         )}
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between flex-col gap-4 md:flex-row md:gap-0">
           <button
-            className="focus:shadow-outline rounded-lg border-2 border-gray-200 py-2 px-4 font-bold text-gray-200 hover:bg-gray-200 hover:text-black focus:outline-none"
+            className="focus:shadow-outline rounded-lg border-2 border-gray-200 py-2 px-3 md:px-4.5 lg:px-7 font-bold text-gray-200 hover:bg-gray-200 hover:text-black focus:outline-none"
             type="submit"
           >
             Se connecter

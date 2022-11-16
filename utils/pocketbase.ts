@@ -153,7 +153,7 @@ export async function getDeliveryCardById(id: string) {
 export async function getUserDeliveryCards() {
   let items: Record[] = [];
   const result = await client.records.getList("userDeliveryCard", 1, 50, {
-    expand: "deliveryCard",
+    expand: 'deliveryCard, deliveryCard.rarity',
     filter: 'user = "' + client.authStore?.model?.id + '"',
   });
 
@@ -162,7 +162,7 @@ export async function getUserDeliveryCards() {
     items = result.items;
 
     items.forEach((item) => {
-      const url = client.records.getFileUrl(item, item.image);
+      const url = client.records.getFileUrl(item["@expand"].deliveryCard, item["@expand"].deliveryCard.image);
       deliveryBoys.push(convertRecordToDeliveryBoy(item, url));
     });
   }
